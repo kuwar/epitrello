@@ -49,16 +49,16 @@ public class EpitrelloDataServerice {
 		if (DataStore.getInstance().isTaskExist(name)) {
 			return "Task already exists";
 		}
-		if (! DataStore.getInstance().isListExist(list)) {
+		if (!DataStore.getInstance().isListExist(list)) {
 			return "List does not exist";
 		}
 
 		Task task = new Task();
 
 		task.addTask(list, name, estimatedTime, priority, description);
-		
+
 		DataStore.getInstance().getTaskList(list).setTasks(task);
-		
+
 		return "Success";
 	}
 
@@ -182,11 +182,19 @@ public class EpitrelloDataServerice {
 		Task task = DataStore.getInstance().getTask(taskName);
 		List list = DataStore.getInstance().getTaskList(listName);
 
-		if ((task != null) && (list != null)) {
-//			task.changeList(listName);
+		if (task == null) {
+			return "Task does not exist";
+		}
+		if (list != null) {
+			return "List does not exist";
 		}
 
-		return "\n";
+		// get all the tasks in list
+		java.util.List<Task> tasksInList = list.getTasks();
+		
+		
+
+		return "Success";
 	}
 
 	public void printList(String list) {
