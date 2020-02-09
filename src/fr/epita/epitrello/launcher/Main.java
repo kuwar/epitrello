@@ -44,12 +44,13 @@ public class Main {
 		System.out.println(dataserverice.addTask("Misc", "Upload Assignment", 1, 1, "Upload it"));
 
 		System.out.println(dataserverice.completeTask("Do Everything"));
-		/*
-		 * completeTask(string task) System.out.println(
-		 * dataserverice.printUsersByPerformance() ); System.out.println(
-		 * dataserverice.printUsersByWorkload() );
-		 * 
-		 * System.out.println( dataserverice.printUnassignedTasksByPriority() );
+		
+		 System.out.println(dataserverice.printUsersByPerformance() ); 
+		 
+		 
+		 System.out.println( dataserverice.printUsersByWorkload() );
+		 
+		 /* System.out.println( dataserverice.printUnassignedTasksByPriority() );
 		 * System.out.println( dataserverice.deleteTask("Upload Assignment") ); //
 		 * deleteTask(string task) System.out.println(
 		 * dataserverice.printAllUnfinishedTasksByPriority() );

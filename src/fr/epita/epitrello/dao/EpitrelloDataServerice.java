@@ -3,6 +3,11 @@
  */
 package fr.epita.epitrello.dao;
 
+import java.util.Collections;
+
+import fr.epita.epitrello.util.SortUserByPerformance;
+import fr.epita.epitrello.util.SortUserByWorkload;
+
 /**
  * @author kuwar
  *
@@ -100,12 +105,26 @@ public class EpitrelloDataServerice {
 		return "Task does not exist.";
 	}
 
-	public void printUsersByPerformance() {
+	public String printUsersByPerformance() {
+		java.util.List<User> users = DataStore.getInstance().getUserList();
 
+		Collections.sort(users, new SortUserByPerformance());
+		for(User user: users) {
+			System.out.println(user.getName());
+		}
+		
+		return "\n";
 	}
 
-	public void printUsersByWorkload() {
+	public String printUsersByWorkload() {
+		java.util.List<User> users = DataStore.getInstance().getUserList();
 
+		Collections.sort(users, new SortUserByWorkload());
+		for(User user: users) {
+			System.out.println(user.getName());
+		}
+		
+		return "\n";
 	}
 
 	public void printUnassignedTasksByPriority() {
