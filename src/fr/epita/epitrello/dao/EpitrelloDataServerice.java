@@ -15,20 +15,49 @@ public class EpitrelloDataServerice {
 	public EpitrelloDataServerice() {
 	}
 
-	public void addUser(String name) {
+	public String addUser(String name) {
+		// check if user exist
+		if (DataStore.getInstance().isUserExist(name)) {
+			return "User already exists.";
+		} else {
+			User user = new User();
+			user.addUser(name);
 
+			return user.getName();
+		}
 	}
 
-	public void addList(String name) {
+	public String addList(String name) {
+		if (DataStore.getInstance().isListExist(name)) {
+			return "List string already exists";
+		}
 
+		List list = new List();
+		list.addList(name);
+
+		return list.getName();
 	}
 
-	public void addTask(String list, String name, int estimatedTime, int priority, String description) {
+	public String addTask(String list, String name, int estimatedTime, int priority, String description) {
+		if (DataStore.getInstance().isTaskExist(name)) {
+			return "Task already exists";
+		}
 
+		Task task = new Task(list);
+
+		task.addTask(list, name, estimatedTime, priority, description);
+
+		return task.getName();
 	}
 
-	public void editTask(String task, int estimatedTime, int priority, String description) {
-
+	public String editTask(String task, int estimatedTime, int priority, String description) {
+		if (DataStore.getInstance().isTaskExist(task)) {
+			DataStore.getInstance().editTask(task, estimatedTime, priority, description);
+			
+			return task + " edited.";
+		}
+		
+		return "The task does not exist.";
 	}
 
 	public void assignTask(String task, String user) {
