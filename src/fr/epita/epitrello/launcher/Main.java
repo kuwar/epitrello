@@ -66,7 +66,7 @@ public class Main {
 		 * System.out.println( dataserverice.printList("Code") ); // printList(string
 		 * list)
 		 */
-		System.out.println(dataserverice.printAllLists());
+		//System.out.println(dataserverice.printAllLists());
 		/*
 		 * System.out.println( dataserverice.printUserTasks("AmirAli") ); //
 		 * printUserTasks(string user)

@@ -9,14 +9,7 @@ import java.util.ArrayList;
  * @author kuwar
  *
  */
-public class Task extends List {
-
-	/**
-	 * @param name
-	 */
-	public Task(String name) {
-//		super(name);
-	}
+public class Task {
 
 	String list;
 	String name;
@@ -24,7 +17,6 @@ public class Task extends List {
 	int priority;
 	String description;
 	boolean completed = false;
-	
 
 	java.util.List<User> users = new ArrayList<User>();
 

@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  *
  */
 public class DataStore {
-	
+
 	List<User> userList = new ArrayList<User>();
 
 	List<fr.epita.epitrello.dao.List> taskList = new ArrayList<fr.epita.epitrello.dao.List>();
@@ -79,6 +79,20 @@ public class DataStore {
 	 */
 	public void storeList(fr.epita.epitrello.dao.List list) {
 		this.taskList.add(list);
+	}
+
+	public fr.epita.epitrello.dao.List getTaskList(String name) {
+		for (fr.epita.epitrello.dao.List list : this.taskList) {
+			if (list.getName() == name) {
+				return list;
+			}
+		}
+
+		return null;
+	}
+
+	public List<fr.epita.epitrello.dao.List> getTaskLists() {
+		return this.taskList;
 	}
 
 	/**
