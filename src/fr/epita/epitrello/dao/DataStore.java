@@ -6,6 +6,7 @@ package fr.epita.epitrello.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author kuwar
@@ -126,6 +127,10 @@ public class DataStore {
 		return null;
 	}
 
+	public List<Task> getTasks() {
+		return this.tasks;
+	}
+
 	public void printAll() {
 		System.out.println("---Users---");
 		this.userList.stream().forEach(user -> System.out.println(user.getName()));
@@ -143,6 +148,24 @@ public class DataStore {
 	 */
 	public void assignTask(Task task, User user) {
 		userTask.put(user, task);
+	}
+
+	/**
+	 * @param task
+	 */
+	public void deleteTask(String name) {
+		for (int i = 0; i < this.tasks.size(); i++) {
+			if (this.tasks.get(i).getName() == name) {
+				this.tasks.remove(i);
+			}
+		}
+	}
+
+	/**
+	 * @return
+	 */
+	public List<Task> getUnfinishedTask() {
+		return this.tasks.stream().filter(task -> task.isCompleted() == false).collect(Collectors.toList());
 	}
 
 }

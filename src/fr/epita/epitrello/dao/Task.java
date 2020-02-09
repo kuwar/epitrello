@@ -23,7 +23,7 @@ public class Task extends List {
 	int estimatedTime;
 	int priority;
 	String description;
-	boolean completed;
+	boolean completed = false;
 	
 
 	java.util.List<User> users = new ArrayList<User>();
@@ -87,11 +87,11 @@ public class Task extends List {
 		this.users.add(user);
 	}
 
-	public boolean isStatus() {
+	public boolean isCompleted() {
 		return completed;
 	}
 
-	public void setStatus(boolean status) {
+	public void setCompleted(boolean status) {
 		this.completed = status;
 	}
 

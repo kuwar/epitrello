@@ -4,7 +4,9 @@
 package fr.epita.epitrello.dao;
 
 import java.util.Collections;
+import java.util.stream.Collectors;
 
+import fr.epita.epitrello.util.SortTaskByPriority;
 import fr.epita.epitrello.util.SortUserByPerformance;
 import fr.epita.epitrello.util.SortUserByWorkload;
 
@@ -97,11 +99,11 @@ public class EpitrelloDataServerice {
 
 	public String completeTask(String task) {
 		if (DataStore.getInstance().isTaskExist(task)) {
-			DataStore.getInstance().getTask(task).setStatus(true);
-			
+			DataStore.getInstance().getTask(task).setCompleted(true);
+
 			return "Success";
 		}
-		
+
 		return "Task does not exist.";
 	}
 
@@ -109,10 +111,10 @@ public class EpitrelloDataServerice {
 		java.util.List<User> users = DataStore.getInstance().getUserList();
 
 		Collections.sort(users, new SortUserByPerformance());
-		for(User user: users) {
+		for (User user : users) {
 			System.out.println(user.getName());
 		}
-		
+
 		return "\n";
 	}
 
@@ -120,23 +122,52 @@ public class EpitrelloDataServerice {
 		java.util.List<User> users = DataStore.getInstance().getUserList();
 
 		Collections.sort(users, new SortUserByWorkload());
-		for(User user: users) {
+		for (User user : users) {
 			System.out.println(user.getName());
 		}
-		
+
 		return "\n";
 	}
 
-	public void printUnassignedTasksByPriority() {
+	public String printUnassignedTasksByPriority() {
 
+		java.util.List<Task> tasks = DataStore.getInstance().getTasks();
+
+		java.util.List<Task> unassignedTasks = tasks.stream().filter(task -> task.getUsers().isEmpty() == true)
+				.collect(Collectors.toList());
+
+		int count = 1;
+		for (Task task : unassignedTasks) {
+			System.out.println(count + " | " + task.getName() + " | Unassigned | " + task.getEstimatedTime() + "h");
+			count++;
+		}
+
+		return "\n";
 	}
 
-	public void deleteTask(String task) {
-
+	public String deleteTask(String task) {
+		if (DataStore.getInstance().isTaskExist(task)) {
+			DataStore.getInstance().deleteTask(task);
+			
+			return "Success";
+		}
+		
+		return "Task does not exist";
 	}
 
-	public void printAllUnfinishedTasksByPriority() {
-
+	public String printAllUnfinishedTasksByPriority() {
+		
+		// get all unfinished task
+		java.util.List<Task> unfinishedTasks = DataStore.getInstance().getUnfinishedTask();
+		
+		// sort unfinished task by priority
+		Collections.sort(unfinishedTasks, new SortTaskByPriority());
+		int count = 1;
+		for (Task task : unfinishedTasks) {
+			System.out.println(count + " | " + task.getName() + " | " + task.getUsers().get(0).getName() + " | " + task.getEstimatedTime() + "h");
+		}
+				
+		return "\n";
 	}
 
 	public void moveTask(String task, String list) {

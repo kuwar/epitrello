@@ -50,13 +50,15 @@ public class Main {
 		 
 		 System.out.println( dataserverice.printUsersByWorkload() );
 		 
-		 /* System.out.println( dataserverice.printUnassignedTasksByPriority() );
-		 * System.out.println( dataserverice.deleteTask("Upload Assignment") ); //
-		 * deleteTask(string task) System.out.println(
-		 * dataserverice.printAllUnfinishedTasksByPriority() );
-		 * 
-		 * System.out.println( dataserverice.addTask("Misc", "Have fun", 10, 2, "Just do
-		 * it") ); System.out.println( dataserverice.moveTask("Have fun", "Code") ); //
+		 System.out.println( dataserverice.printUnassignedTasksByPriority() );
+		 
+		 System.out.println( dataserverice.deleteTask("Upload Assignment") ); //
+		 
+		 System.out.println( dataserverice.printAllUnfinishedTasksByPriority() );
+		 
+		 System.out.println( dataserverice.addTask("Misc", "Have fun", 10, 2, "Just do it") ); 
+		 
+		/* System.out.println( dataserverice.moveTask("Have fun", "Code") ); //
 		 * moveTask(string task, string list) System.out.println(
 		 * dataserverice.printTask("Have fun") );
 		 * 
