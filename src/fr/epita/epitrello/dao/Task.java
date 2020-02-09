@@ -66,4 +66,16 @@ public class Task extends List {
 		this.description = description2;
 	}
 
+	public int getEstimatedTime() {
+		return estimatedTime;
+	}
+
+	public int getPriority() {
+		return priority;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
 }

@@ -20,6 +20,8 @@ public class DataStore {
 
 	List<Task> tasks = new ArrayList<Task>();
 
+	HashMap<User, Task> userTask = new HashMap<User, Task>();
+
 	private static DataStore dataStore;
 
 	private DataStore() {
@@ -41,6 +43,16 @@ public class DataStore {
 
 	public List<User> getUserList() {
 		return this.userList;
+	}
+
+	public User getUser(String name) {
+		for (User user : this.userList) {
+			if (user.name == name) {
+				return user;
+			}
+		}
+
+		return null;
 	}
 
 	public boolean isUserExist(String name) {
@@ -97,21 +109,42 @@ public class DataStore {
 			if (this.tasks.get(i).getName() == name) {
 				this.tasks.get(i).setEstimatedTime(estimatedTime);
 				this.tasks.get(i).setPriority(priority);
-				this.tasks.get(i).setDescription(description);				
+				this.tasks.get(i).setDescription(description);
 			}
 		}
 
 		return false;
 	}
-	
+
 	public Task getTask(String name) {
 		for (Task task : this.tasks) {
 			if (task.getName() == name) {
 				return task;
 			}
 		}
-		
+
 		return null;
+	}
+
+	public void printAll() {
+		System.out.println("---Users---");
+		this.userList.stream().forEach(user -> System.out.println(user.getName()));
+
+		System.out.println("---List---");
+		this.taskList.stream().forEach(list -> System.out.println(list.getName()));
+
+		System.out.println("---Task---");
+		this.tasks.stream().forEach(task -> System.out.println(task.getName()));
+	}
+
+	/**
+	 * @param task
+	 * @param user
+	 */
+	public void assignTask(Task task, User user) {
+
+		userTask.put(user, task);
+
 	}
 
 }

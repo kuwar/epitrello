@@ -38,8 +38,10 @@ public class Main {
 		 * string description)
 		 */
 
-		/**
-		 * System.out.println( dataserverice.assignTask("Do Everything", "Rabih") ); //
+
+		 System.out.println( dataserverice.assignTask("Do Everything", "Rabih") ); //
+		 
+		 /* 
 		 * assignTask(string task, string user) System.out.println(
 		 * dataserverice.printTask("Do Everything") ); // printTask(string task)
 		 * 
@@ -70,9 +72,9 @@ public class Main {
 		 * 
 		 * System.out.println( dataserverice.printList("Code") ); // printList(string
 		 * list)
-		 * 
-		 * System.out.println( dataserverice.printAllLists() );
-		 * 
+		 */
+		System.out.println(dataserverice.printAllLists());
+		/*
 		 * System.out.println( dataserverice.printUserTasks("AmirAli") ); //
 		 * printUserTasks(string user)
 		 * 

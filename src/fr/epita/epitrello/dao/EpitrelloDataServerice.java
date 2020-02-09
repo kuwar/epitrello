@@ -23,7 +23,7 @@ public class EpitrelloDataServerice {
 			User user = new User();
 			user.addUser(name);
 
-			return user.getName();
+			return "Success";
 		}
 	}
 
@@ -35,7 +35,7 @@ public class EpitrelloDataServerice {
 		List list = new List();
 		list.addList(name);
 
-		return list.getName();
+		return "Success";
 	}
 
 	public String addTask(String list, String name, int estimatedTime, int priority, String description) {
@@ -47,21 +47,30 @@ public class EpitrelloDataServerice {
 
 		task.addTask(list, name, estimatedTime, priority, description);
 
-		return task.getName();
+		return "Success";
 	}
 
 	public String editTask(String task, int estimatedTime, int priority, String description) {
 		if (DataStore.getInstance().isTaskExist(task)) {
 			DataStore.getInstance().editTask(task, estimatedTime, priority, description);
-			
-			return task + " edited.";
+
+			return "Success";
 		}
-		
+
 		return "The task does not exist.";
 	}
 
-	public void assignTask(String task, String user) {
+	public String assignTask(String task, String user) {
+		User userDetail = DataStore.getInstance().getUser(user);
+		Task taskDetail = DataStore.getInstance().getTask(task);
 
+		if ((userDetail != null) && (taskDetail != null)) {
+			DataStore.getInstance().assignTask(taskDetail, userDetail);
+			
+			return "Success";
+		}
+		
+		return "Unable to assign Task: " + task + "to User: " + user;
 	}
 
 	public void printTask(String task) {
@@ -100,8 +109,10 @@ public class EpitrelloDataServerice {
 
 	}
 
-	public void printAllLists() {
+	public String printAllLists() {
+		DataStore.getInstance().printAll();
 
+		return "----Done---";
 	}
 
 	public void printUserTasks(String user) {
