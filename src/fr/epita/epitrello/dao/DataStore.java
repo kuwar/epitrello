@@ -142,9 +142,7 @@ public class DataStore {
 	 * @param user
 	 */
 	public void assignTask(Task task, User user) {
-
 		userTask.put(user, task);
-
 	}
 
 }

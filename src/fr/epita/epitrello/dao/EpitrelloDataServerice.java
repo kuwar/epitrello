@@ -65,20 +65,39 @@ public class EpitrelloDataServerice {
 		Task taskDetail = DataStore.getInstance().getTask(task);
 
 		if ((userDetail != null) && (taskDetail != null)) {
-			DataStore.getInstance().assignTask(taskDetail, userDetail);
+			// establishing two association with users and tasks
+			userDetail.setTask(taskDetail);
+			taskDetail.setUsers(userDetail);
+
+			return "Success";
+		}
+
+		return "Unable to assign Task: " + task + "to User: " + user;
+	}
+
+	public String printTask(String task) {
+		Task taskDetail = DataStore.getInstance().getTask(task);
+
+		System.out.println(taskDetail.getName());
+		System.out.println(taskDetail.getDescription());
+		System.out.println("Priority: " + taskDetail.getPriority());
+		System.out.println("Estimated Time: " + taskDetail.getEstimatedTime());
+		// iterate over all the users assigned to the task
+		for (User user : taskDetail.getUsers()) {
+			System.out.println("Assigned to " + user.getName());
+		}
+
+		return "\n";
+	}
+
+	public String completeTask(String task) {
+		if (DataStore.getInstance().isTaskExist(task)) {
+			DataStore.getInstance().getTask(task).setStatus(true);
 			
 			return "Success";
 		}
 		
-		return "Unable to assign Task: " + task + "to User: " + user;
-	}
-
-	public void printTask(String task) {
-
-	}
-
-	public void completeTask(String task) {
-
+		return "Task does not exist.";
 	}
 
 	public void printUsersByPerformance() {

@@ -3,6 +3,8 @@
  */
 package fr.epita.epitrello.dao;
 
+import java.util.ArrayList;
+
 /**
  * @author kuwar
  *
@@ -21,6 +23,10 @@ public class Task extends List {
 	int estimatedTime;
 	int priority;
 	String description;
+	boolean completed;
+	
+
+	java.util.List<User> users = new ArrayList<User>();
 
 	public void addTask(String list, String name, int estimatedTime, int priority, String description) {
 		this.name = name;
@@ -32,7 +38,6 @@ public class Task extends List {
 	}
 
 	public void editTask(String task, int estimatedTime, int priority, String description) {
-		
 
 	}
 
@@ -76,6 +81,22 @@ public class Task extends List {
 
 	public String getDescription() {
 		return description;
+	}
+
+	public void setUsers(User user) {
+		this.users.add(user);
+	}
+
+	public boolean isStatus() {
+		return completed;
+	}
+
+	public void setStatus(boolean status) {
+		this.completed = status;
+	}
+
+	public java.util.List<User> getUsers() {
+		return this.users;
 	}
 
 }
