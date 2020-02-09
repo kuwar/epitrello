@@ -4,7 +4,6 @@
 package fr.epita.epitrello.dao;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,15 +12,12 @@ import java.util.stream.Collectors;
  *
  */
 public class DataStore {
-
-	HashMap<String, List<User>> userMap = new HashMap<String, List<User>>();
+	
 	List<User> userList = new ArrayList<User>();
 
 	List<fr.epita.epitrello.dao.List> taskList = new ArrayList<fr.epita.epitrello.dao.List>();
 
 	List<Task> tasks = new ArrayList<Task>();
-
-	HashMap<User, Task> userTask = new HashMap<User, Task>();
 
 	private static DataStore dataStore;
 
@@ -140,14 +136,6 @@ public class DataStore {
 
 		System.out.println("---Task---");
 		this.tasks.stream().forEach(task -> System.out.println(task.getName()));
-	}
-
-	/**
-	 * @param task
-	 * @param user
-	 */
-	public void assignTask(Task task, User user) {
-		userTask.put(user, task);
 	}
 
 	/**

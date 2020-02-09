@@ -170,8 +170,12 @@ public class EpitrelloDataServerice {
 		return "\n";
 	}
 
-	public void moveTask(String task, String list) {
-
+	public String moveTask(String taskName, String listName) {
+		
+		Task task = DataStore.getInstance().getTask(taskName);
+//		List list = DataStore.getInstance().Li
+		
+		return "\n";
 	}
 
 	public void printList(String list) {
