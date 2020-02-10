@@ -13,7 +13,7 @@ import java.util.Properties;
  * @author kuwar
  *
  */
-public class DBConfiguration {
+public class Configuration {
 
 	private static Properties properties = new Properties();
 	private static boolean isInit = false;

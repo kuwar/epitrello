@@ -8,7 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-import fr.epita.epitrello.services.DBConfiguration;
+import fr.epita.epitrello.services.Configuration;
 
 /**
  * @author kuwar
@@ -24,6 +24,6 @@ public class PropertiesTest {
 		
 		System.out.println(p.getProperty("db.user"));
 		
-		System.out.println(DBConfiguration.getValue("db.user"));
+		System.out.println(Configuration.getValue("db.user"));
 	}
 }

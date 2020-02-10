@@ -24,7 +24,7 @@ public class FileLogger {
 	 * @param message
 	 */
 	public static void write(String message) {
-		SimpleDateFormat formater = new SimpleDateFormat("yyyy_MM_dd");
+		SimpleDateFormat formater = new SimpleDateFormat(Configuration.getValue("log.filename"));
 		String date = formater.format(new Date());
 		File file = new File(date + ".log");
 		// print in the file
