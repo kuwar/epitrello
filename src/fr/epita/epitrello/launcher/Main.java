@@ -72,6 +72,7 @@ public class Main {
 		System.out.println(dataserverice.printAllUnfinishedTasksByPriority());
 
 		// TODO Write all the prints into a file.
+		
 		// TODO Save users in a db.
 	}
 
