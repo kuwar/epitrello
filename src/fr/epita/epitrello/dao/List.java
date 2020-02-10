@@ -60,7 +60,8 @@ public class List {
 	 * @param task
 	 */
 	public void remove(Task taskToFilterOut) {
-		this.tasks = this.tasks.stream().filter(task -> task.getName() != taskToFilterOut.getName()).collect(Collectors.toList());
+		this.tasks = this.tasks.stream().filter(task -> task.getName() != taskToFilterOut.getName())
+				.collect(Collectors.toList());
 	}
 
 }

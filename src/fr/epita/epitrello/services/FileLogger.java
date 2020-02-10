@@ -15,7 +15,14 @@ import java.util.Date;
  *
  */
 public class FileLogger {
-	
+
+	/**
+	 * Print the message in the file All of the system output are logged in the file
+	 * The filename is make unique on daily basis Which means only one file is
+	 * generated on daily basis.
+	 * 
+	 * @param message
+	 */
 	public static void write(String message) {
 		SimpleDateFormat formater = new SimpleDateFormat("yyyy_MM_dd");
 		String date = formater.format(new Date());
@@ -33,5 +40,5 @@ public class FileLogger {
 		}
 
 	}
-	
+
 }

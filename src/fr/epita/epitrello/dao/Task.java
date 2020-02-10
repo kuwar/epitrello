@@ -26,7 +26,7 @@ public class Task {
 		this.priority = priority;
 		this.description = description;
 		this.setList(list);
-		
+
 		DataStore.getInstance().storeTask(this);
 	}
 
@@ -91,7 +91,7 @@ public class Task {
 	public java.util.List<User> getUsers() {
 		return this.users;
 	}
-	
+
 	public List getList() {
 		return list;
 	}
