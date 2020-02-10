@@ -44,29 +44,26 @@ public class Main {
 		System.out.println(dataserverice.addTask("Misc", "Upload Assignment", 1, 1, "Upload it"));
 
 		System.out.println(dataserverice.completeTask("Do Everything"));
-		
-		 System.out.println(dataserverice.printUsersByPerformance() ); 
-		 
-		 
-		 System.out.println( dataserverice.printUsersByWorkload() );
-		 
-		 System.out.println( dataserverice.printUnassignedTasksByPriority() );
-		 
-		 System.out.println( dataserverice.deleteTask("Upload Assignment") ); //
-		 
-		 System.out.println( dataserverice.printAllUnfinishedTasksByPriority() );
-		 
-		 System.out.println( dataserverice.addTask("Misc", "Have fun", 10, 2, "Just do it") ); 
-		 
-		System.out.println( dataserverice.moveTask("Have fun", "Code") ); 
-		/* //
-		 * moveTask(string task, string list) System.out.println(
-		 * dataserverice.printTask("Have fun") );
-		 * 
-		 * System.out.println( dataserverice.printList("Code") ); // printList(string
-		 * list)
-		 */
-		//System.out.println(dataserverice.printAllLists());
+
+		System.out.println(dataserverice.printUsersByPerformance());
+
+		System.out.println(dataserverice.printUsersByWorkload());
+
+		System.out.println(dataserverice.printUnassignedTasksByPriority());
+
+		System.out.println(dataserverice.deleteTask("Upload Assignment")); //
+
+		System.out.println(dataserverice.printAllUnfinishedTasksByPriority());
+
+		System.out.println(dataserverice.addTask("Misc", "Have fun", 10, 2, "Just do it"));
+
+		System.out.println(dataserverice.moveTask("Have fun", "Code"));
+
+		System.out.println(dataserverice.printTask("Have fun"));
+
+		System.out.println(dataserverice.printList("Code")); // printList(string list)
+
+		// System.out.println(dataserverice.printAllLists());
 		/*
 		 * System.out.println( dataserverice.printUserTasks("AmirAli") ); //
 		 * printUserTasks(string user)

@@ -55,7 +55,7 @@ public class EpitrelloDataServerice {
 
 		Task task = new Task();
 
-		task.addTask(list, name, estimatedTime, priority, description);
+		task.addTask(DataStore.getInstance().getTaskList(list), name, estimatedTime, priority, description);
 
 		DataStore.getInstance().getTaskList(list).setTasks(task);
 
@@ -95,8 +95,12 @@ public class EpitrelloDataServerice {
 		System.out.println("Priority: " + taskDetail.getPriority());
 		System.out.println("Estimated Time: " + taskDetail.getEstimatedTime());
 		// iterate over all the users assigned to the task
-		for (User user : taskDetail.getUsers()) {
-			System.out.println("Assigned to " + user.getName());
+		if (taskDetail.getUsers().size() != 0) {
+			for (User user : taskDetail.getUsers()) {
+				System.out.println("Assigned to " + user.getName());
+			}
+		} else {
+			System.out.println("Unassigned");
 		}
 
 		return "\n";
@@ -185,14 +189,17 @@ public class EpitrelloDataServerice {
 		if (task == null) {
 			return "Task does not exist";
 		}
-		if (list != null) {
+		if (list == null) {
 			return "List does not exist";
 		}
+		// remove the task from old list
+		list.remove(task);
 
-		// get all the tasks in list
-		java.util.List<Task> tasksInList = list.getTasks();
-		
-		
+		// add new list to task
+		list.setTasks(task);
+
+		// set new list to task ie update task pointing to list
+		task.setList(list);
 
 		return "Success";
 	}

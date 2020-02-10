@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class Task {
 
-	String list;
+	List list = new List();
 	String name;
 	int estimatedTime;
 	int priority;
@@ -20,12 +20,13 @@ public class Task {
 
 	java.util.List<User> users = new ArrayList<User>();
 
-	public void addTask(String list, String name, int estimatedTime, int priority, String description) {
+	public void addTask(List list, String name, int estimatedTime, int priority, String description) {
 		this.name = name;
 		this.estimatedTime = estimatedTime;
 		this.priority = priority;
 		this.description = description;
-
+		this.setList(list);
+		
 		DataStore.getInstance().storeTask(this);
 	}
 
@@ -89,6 +90,14 @@ public class Task {
 
 	public java.util.List<User> getUsers() {
 		return this.users;
+	}
+	
+	public List getList() {
+		return list;
+	}
+
+	public void setList(List list) {
+		this.list = list;
 	}
 
 }
