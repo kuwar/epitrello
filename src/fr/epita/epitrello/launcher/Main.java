@@ -63,15 +63,13 @@ public class Main {
 
 		System.out.println(dataserverice.printList("Code")); // printList(string list)
 
-		// System.out.println(dataserverice.printAllLists());
-		/*
-		 * System.out.println( dataserverice.printUserTasks("AmirAli") ); //
-		 * printUserTasks(string user)
-		 * 
-		 * System.out.println( dataserverice.printUnassignedTasksByPriority() );
-		 * 
-		 * System.out.println( dataserverice.printAllUnfinishedTasksByPriority() );
-		 */
+		System.out.println(dataserverice.printAllLists());
+
+		System.out.println(dataserverice.printUserTasks("AmirAli"));
+
+		System.out.println(dataserverice.printUnassignedTasksByPriority());
+
+		System.out.println(dataserverice.printAllUnfinishedTasksByPriority());
 
 		// TODO Write all the prints into a file.
 		// TODO Save users in a db.

@@ -173,8 +173,12 @@ public class EpitrelloDataServerice {
 		Collections.sort(unfinishedTasks, new SortTaskByPriority());
 		int count = 1;
 		for (Task task : unfinishedTasks) {
-			System.out.println(count + " | " + task.getName() + " | " + task.getUsers().get(0).getName() + " | "
-					+ task.getEstimatedTime() + "h");
+			String userName = "Unassigned";
+			if (task.getUsers().size() > 0) {
+				userName = task.getUsers().get(0).getName();
+			}
+			System.out
+					.println(count + " | " + task.getName() + " | " + userName + " | " + task.getEstimatedTime() + "h");
 			count++;
 		}
 
@@ -204,17 +208,46 @@ public class EpitrelloDataServerice {
 		return "Success";
 	}
 
-	public void printList(String list) {
+	public String printList(String name) {
+		if (DataStore.getInstance().isListExist(name)) {
+			List list = DataStore.getInstance().getTaskList(name);
+			System.out.println("List " + list.getName());
 
+			for (Task task : list.getTasks()) {
+				String userName = "Unassigned";
+				if (task.getUsers().size() > 0) {
+					userName = task.getUsers().get(0).getName();
+				}
+				System.out.println(task.getPriority() + " | " + task.getName() + " | " + userName + " | "
+						+ task.getEstimatedTime() + "h");
+			}
+			return "\n";
+		}
+
+		return "List does not exist";
 	}
 
 	public String printAllLists() {
-		DataStore.getInstance().printAll();
+		for (List list : DataStore.getInstance().getTaskLists()) {
+			this.printList(list.getName());
+		}
 
-		return "----Done---";
+		return "\n";
 	}
 
-	public void printUserTasks(String user) {
+	public String printUserTasks(String name) {
+		if (DataStore.getInstance().isUserExist(name)) {
+			User user = DataStore.getInstance().getUser(name);
+			int count = 1;
+			for (Task task : user.getTask()) {
+				System.out.println(count + " | " + task.getName() + " | " + user.getName() + " | "
+						+ task.getEstimatedTime() + "h");
+				count++;
+			}
 
+			return "\n";
+		}
+
+		return "User does not exist";
 	}
 }
