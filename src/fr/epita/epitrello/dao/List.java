@@ -12,27 +12,33 @@ import java.util.stream.Collectors;
  */
 public class List {
 
+	/**
+	 * Name of list
+	 */
 	String name;
 
+	/**
+	 * List of tasks in the list
+	 */
 	java.util.List<Task> tasks = new ArrayList<Task>();
 
 	/**
 	 * 
 	 */
 	public List() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * 
 	 */
 	public List(String name) {
-		// TODO Auto-generated constructor stub
 		this.name = name;
 	}
 
 	/**
+	 * Add list
 	 * 
+	 * @param name
 	 */
 	public void addList(String name) {
 		this.name = name;
@@ -57,6 +63,8 @@ public class List {
 	}
 
 	/**
+	 * Remove task from the list
+	 * 
 	 * @param task
 	 */
 	public void remove(Task taskToFilterOut) {

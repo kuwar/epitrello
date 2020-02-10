@@ -11,15 +11,52 @@ import java.util.ArrayList;
  */
 public class Task {
 
+	/**
+	 * list in which task is associated with
+	 */
 	List list = new List();
+
+	/**
+	 * name of list
+	 */
 	String name;
+
+	/**
+	 * estimated time for list
+	 */
 	int estimatedTime;
+
+	/**
+	 * Priority of the list
+	 */
 	int priority;
+
+	/**
+	 * detail description of the list
+	 */
 	String description;
+
+	/**
+	 * Status to check whether list is complete or not
+	 */
 	boolean completed = false;
 
+	/**
+	 * List of users associated with the list
+	 * 
+	 * For further extension a task can be assigned to multiple users
+	 */
 	java.util.List<User> users = new ArrayList<User>();
 
+	/**
+	 * Add task
+	 * 
+	 * @param list
+	 * @param name
+	 * @param estimatedTime
+	 * @param priority
+	 * @param description
+	 */
 	public void addTask(List list, String name, int estimatedTime, int priority, String description) {
 		this.name = name;
 		this.estimatedTime = estimatedTime;
@@ -76,6 +113,11 @@ public class Task {
 		return description;
 	}
 
+	/**
+	 * Assign user to the task
+	 * 
+	 * @param user
+	 */
 	public void setUsers(User user) {
 		this.users.add(user);
 	}
@@ -84,10 +126,20 @@ public class Task {
 		return completed;
 	}
 
+	/**
+	 * Complete the task
+	 * 
+	 * @param status
+	 */
 	public void setCompleted(boolean status) {
 		this.completed = status;
 	}
 
+	/**
+	 * Get users assigned to the task
+	 * 
+	 * @return
+	 */
 	public java.util.List<User> getUsers() {
 		return this.users;
 	}
