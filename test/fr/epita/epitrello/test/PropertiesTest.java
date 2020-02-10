@@ -17,7 +17,7 @@ import fr.epita.epitrello.services.Configuration;
 public class PropertiesTest {
 
 	public static void main(String[] args) throws IOException {
-		FileReader reader = new FileReader(new File("db.properties"));
+		FileReader reader = new FileReader(new File("config.properties"));
 		
 		Properties p = new Properties();
 		p.load(reader);

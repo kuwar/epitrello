@@ -19,7 +19,7 @@ public class Configuration {
 	private static boolean isInit = false;
 
 	public static void init() throws FileNotFoundException, IOException {
-		properties.load(new FileInputStream(new File("db.properties")));
+		properties.load(new FileInputStream(new File("config.properties")));
 		isInit = true;
 	}
 
