@@ -240,7 +240,7 @@ public class DataStore {
 	/**
 	 * Delete task
 	 * 
-	 * @param task
+	 * @param nanme
 	 */
 	public void deleteTask(String name) {
 		for (int i = 0; i < this.tasks.size(); i++) {

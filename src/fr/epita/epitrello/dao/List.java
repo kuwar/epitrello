@@ -65,7 +65,7 @@ public class List {
 	/**
 	 * Remove task from the list
 	 * 
-	 * @param task
+	 * @param taskToFilterOut
 	 */
 	public void remove(Task taskToFilterOut) {
 		this.tasks = this.tasks.stream().filter(task -> task.getName() != taskToFilterOut.getName())
